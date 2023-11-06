@@ -5,8 +5,6 @@ const axios = require("axios");
 require("dotenv").config();
 const app = express();
 
-app.use(express.static(path.join(__dirname, "client", "build")));
-
 app.get("/api/weather/:city", cors(), async (req, res) => {
     try {
         const response = await axios.get(
@@ -32,6 +30,11 @@ app.get("/api/weather/:city", cors(), async (req, res) => {
             res.status(500).send("failed to fetch data from server");
         }
     }
+});
+app.use(express.static(path.join(__dirname, "client", "build")));
+
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 const PORT = process.env.PORT || 7000;

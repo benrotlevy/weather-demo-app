@@ -39,7 +39,7 @@ function App() {
     return (
         <div className="App">
             <header>
-                <img src={icon} width="100" height="100" />
+                <img src={icon} width="100" height="100" alt="icon" />
             </header>
             <input
                 placeholder="enter city name"
